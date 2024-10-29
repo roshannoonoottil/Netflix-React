@@ -41,6 +41,8 @@ const signup = async (name, email, password) => {
 }
 
 const login = async (email, password) =>{
+    console.log(email);
+    
 
     try {
 

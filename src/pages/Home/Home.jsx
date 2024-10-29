@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Home.css'
 import Navbar from '../../components/Navbar/Navbar'
 import hero_banner from '../../assets/hero_banner.jpg'
@@ -7,14 +7,17 @@ import play_icon from '../../assets/play_icon.png'
 import info_icon from '../../assets/info_icon.png'
 import TitleCards from '../../components/TitleCards/TitleCards'
 import Footer from '../../components/Footer/Footer'
-
+import { useLocation } from 'react-router-dom'
 
 
 
 const Home = () => {
+  const location = useLocation();
+console.log(location.state.email," email in home")
+ 
   return (
     <div className='home'>
-      <Navbar />
+      <Navbar email={location.state.email}/>
       <div className="hero">
         <img src={hero_banner} alt="" className='banner-img'/>
         <div className="hero-caption">

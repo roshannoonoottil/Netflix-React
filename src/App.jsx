@@ -7,6 +7,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Counter from './components/Counter'
 
 const App = () => {
 
@@ -16,10 +17,11 @@ const App = () => {
     onAuthStateChanged(auth, async (user)=>{
       if(user){
         console.log("Logged In");
-        navigate('/')
+        console.log(user)
+        navigate('/home',{ state: { email: user.email} })
       }else{
         console.log("Logged Out");
-        navigate('/login')
+        navigate('/')
       }
     })
   },[])
@@ -27,16 +29,16 @@ const App = () => {
   return (
     <div>
 
-      <ToastContainer theme='dark'/>
+      {/* <ToastContainer theme='dark'/>
 
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/' element={<Login/>}/>
         <Route path='/player/:id' element={<Player/>}/>
-
-
-      </Routes>  
+      </Routes>   */}
+    <Counter/>
     </div>
+    
   )
 }
 
